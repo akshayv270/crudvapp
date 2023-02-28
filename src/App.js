@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Home from './componant/Home';
+import ContentDb from './componant/db/ContentDb';
+import { useState } from 'react';
+import { customers } from './componant/db/Db';
 
 function App() {
+
+ // const [mycust , setMycust] = useState(customers);
+  const [mycuststomer , setMycustomer] = useState(customers);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <ContentDb.Provider value={{ mycuststomer, setMycustomer }}>
+      <Home />
+    </ContentDb.Provider>
+  </>
   );
 }
 
